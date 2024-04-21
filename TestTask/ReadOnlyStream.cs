@@ -36,7 +36,7 @@ namespace TestTask
         /// <summary>
         /// Флаг окончания файла.
         /// </summary>
-        public bool IsEof => _currentCharIndex >= CountChars - 1;
+        public bool IsEof => _currentCharIndex + 1 >= CountChars - 1;
 
         /// <summary>
         /// Ф-ция чтения следующего символа из потока.
@@ -48,7 +48,7 @@ namespace TestTask
         {
             _currentCharIndex++;
             
-            if (IsEof)
+            if (_currentCharIndex >= CountChars - 1)
             {
                 throw new IndexOutOfRangeException();
             }

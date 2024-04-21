@@ -130,11 +130,11 @@ namespace TestTask
 			switch (charType)
 			{
 				case CharType.Consonants:
-					charTypeCollection = CharTypeCollection.Consonants;
+					charTypeCollection = CharTypeCollection.Vowels;
 
 					break;
 				case CharType.Vowel:
-					charTypeCollection = CharTypeCollection.Vowels;
+					charTypeCollection = CharTypeCollection.Consonants;
 
 					break;
 				default:
@@ -163,6 +163,7 @@ namespace TestTask
 			}
 
 			Console.WriteLine($"ИТОГО = {resultStats.Count()}");
+			Console.WriteLine();
 		}
 
 		/// <summary>
