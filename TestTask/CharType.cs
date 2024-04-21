@@ -1,4 +1,5 @@
-﻿namespace TestTask
+﻿
+namespace TestTask
 {
     /// <summary>
     /// Тип букв

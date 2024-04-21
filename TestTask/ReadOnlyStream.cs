@@ -3,9 +3,12 @@ using System.IO;
 
 namespace TestTask
 {
-    public class ReadOnlyStream : IReadOnlyStream
+    public class ReadOnlyStream
     {
-        private Stream _localStream;
+        private readonly int CountChars;
+
+        private string _chars;
+        private int _currentCharIndex;
 
         /// <summary>
         /// Конструктор класса. 
@@ -15,20 +18,25 @@ namespace TestTask
         /// <param name="fileFullPath">Полный путь до файла для чтения</param>
         public ReadOnlyStream(string fileFullPath)
         {
-            IsEof = true;
-
-            // TODO : Заменить на создание реального стрима для чтения файла!
-            _localStream = null;
+            try
+            {
+                using (StreamReader reader = new StreamReader(fileFullPath))
+                {
+                    _chars = reader.ReadToEnd();
+                    CountChars = _chars.Length;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(e.Message);
+            }
         }
-                
+
         /// <summary>
         /// Флаг окончания файла.
         /// </summary>
-        public bool IsEof
-        {
-            get; // TODO : Заполнять данный флаг при достижении конца файла/стрима при чтении
-            private set;
-        }
+        public bool IsEof => _currentCharIndex + 1 >= CountChars - 1;
 
         /// <summary>
         /// Ф-ция чтения следующего символа из потока.
@@ -38,23 +46,22 @@ namespace TestTask
         /// <returns>Считанный символ.</returns>
         public char ReadNextChar()
         {
-            // TODO : Необходимо считать очередной символ из _localStream
-            throw new NotImplementedException();
+            _currentCharIndex++;
+            
+            if (_currentCharIndex >= CountChars - 1)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            
+            return _chars[_currentCharIndex];
         }
-
+        
         /// <summary>
         /// Сбрасывает текущую позицию потока на начало.
         /// </summary>
         public void ResetPositionToStart()
         {
-            if (_localStream == null)
-            {
-                IsEof = true;
-                return;
-            }
-
-            _localStream.Position = 0;
-            IsEof = false;
+            _currentCharIndex = -1;
         }
     }
 }
