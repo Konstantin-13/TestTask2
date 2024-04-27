@@ -26,9 +26,7 @@ namespace TestTask
             RemoveCharStatsByType(singleLetterStats, CharType.Vowel);
             RemoveCharStatsByType(doubleLetterStats, CharType.Consonants);
 
-            Console.WriteLine("Single letter stats");
             PrintStatistic(singleLetterStats);
-            Console.WriteLine("Double letter stats");
             PrintStatistic(doubleLetterStats);
 
             // TODO : Необжодимо дождаться нажатия клавиши, прежде чем завершать выполнение программы. (DONE)
@@ -71,6 +69,11 @@ namespace TestTask
             stream.EnsureFileDisposed();
 
             return ls;
+        }
+
+        private static IEnumerable<int> SomeMethod()
+        {
+            yield return 1;
         }
 
         /// <summary>
@@ -158,15 +161,22 @@ namespace TestTask
                            orderby i.Letter
                            select i;
 
+            int letters_ttl = 0;
+            int count_ttl = 0;
             foreach (LetterStats i in letters_)
             {
                 Console.Write(i.Letter + " : ");
                 Console.WriteLine(i.Count);
+
+                letters_ttl++;
+                count_ttl += i.Count;
             }
+
+            Console.WriteLine("ИТОГО : " + letters_ttl + " значений / " + count_ttl + " вхождений");
         }
 
         /// <summary>
-        /// Метод увеличивает счётчик вхождений по переданной структуре.
+        /// Метод увеличивает счётчик вхождений по переданному экземпляру.
         /// </summary>
         /// <param name="letterStats"></param>
         private static void IncStatistic(LetterStats letterStats)
