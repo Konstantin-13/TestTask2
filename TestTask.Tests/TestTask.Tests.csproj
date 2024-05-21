@@ -55,6 +55,7 @@
         <Reference Include="System.Xml.Linq" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="LetterStatsTests.cs" />
         <Compile Include="ReadOnlyStreamTest.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>

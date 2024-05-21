@@ -5,9 +5,9 @@ using NUnit.Framework;
 namespace TestTask.Tests
 {
     [TestFixture]
-    public class ReadOnlyStreamTest
+    public sealed class ReadOnlyStreamTest
     {
-        private const string PathToTestFile = "/Volumes/SamsungSSD/Projects/Dotnet/TestTask/README.md";
+        private const string PathToTestFile = "/Volumes/SamsungSSD/Projects/Dotnet/TestTask/TestFile.txt";
         
         [Test]
         public void Read_TestFile_And_Result_Should_Not_Be_Empty()

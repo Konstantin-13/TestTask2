@@ -10,9 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10a4e128-de89-4591-b187-f8f9051a903b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/IReadOnlyStream.cs" beforeDir="false" afterPath="$PROJECT_DIR$/IReadOnlyStream.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TestTask.Tests/LetterStatsTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Abstaction/ILetterStatFiller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Abstaction/LetterStatFiller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fillers/SingleLetterStatFiller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LetterStatListExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TestTask.Tests/ReadOnlyStreamTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../TestTask.Tests/ReadOnlyStreamTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TestTask.Tests/TestTask.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../TestTask.Tests/TestTask.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TestTask/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TestTask/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IReadOnlyStream.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Abstaction/IReadOnlyStream.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReadOnlyStream.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ReadOnlyStream.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestTask.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TestTask.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +28,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -35,10 +48,14 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/497e7c0354334ae6b2579b219192bcf04a000/26/960f6894/Reflect.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e068e2227ab74c1bb3d724ebaab0e3ff46b600/c0/b9299b64/Stream.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8aef16189dbc674d8f2d483e3cab28f81e8276ac0cb5ee6b441f9fc18c38b/ArgumentNullException.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/IReadOnlyStream.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Abstaction/IReadOnlyStream.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Volumes/SamsungSSD/Projects/Dotnet/TestTask/TestTask/IReadOnlyStream.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Volumes/SamsungSSD/Projects/Dotnet/TestTask/TestTask/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Volumes/SamsungSSD/Projects/Dotnet/TestTask/TestTask/ReadOnlyStream.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -52,26 +69,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;RiderMsTestUnitTestingPageId&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.TestTask.executor": "Debug",
+    "30498918-aa45-4a35-a112-d87840cd6495.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "code/fix-bugs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "RiderMsTestUnitTestingPageId",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/Users/danilchizhikov/Library/Application Support/JetBrains/Rider2024.1/resharper-host/DecompilerCache&quot;,
-      &quot;/Users/danilchizhikov/Library/Application Support/JetBrains/Rider2024.1/resharper-host/SourcesCache&quot;,
-      &quot;/Users/danilchizhikov/Library/Application Support/Symbols/src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/danilchizhikov/Library/Application Support/JetBrains/Rider2024.1/resharper-host/DecompilerCache",
+      "/Users/danilchizhikov/Library/Application Support/JetBrains/Rider2024.1/resharper-host/SourcesCache",
+      "/Users/danilchizhikov/Library/Application Support/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.TestTask">
     <configuration name="ConsoleApp1" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -157,7 +176,33 @@
       <workItem from="1716277530792" duration="5528000" />
       <workItem from="1716284528975" duration="215000" />
       <workItem from="1716284752126" duration="874000" />
+      <workItem from="1716285635055" duration="6518000" />
     </task>
+    <task id="LOCAL-00001" summary="fix ReadOnlyStream">
+      <option name="closed" value="true" />
+      <created>1716285700631</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716285700631</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add test assembly">
+      <option name="closed" value="true" />
+      <created>1716285722650</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716285722650</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add first tests">
+      <option name="closed" value="true" />
+      <created>1716286345324</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716286345324</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +210,41 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="fix ReadOnlyStream" />
+    <MESSAGE value="add test assembly" />
+    <MESSAGE value="add first tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="add first tests" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/LetterStatListExtensions.cs</url>
+          <line>20</line>
+          <properties documentPath="$PROJECT_DIR$/LetterStatListExtensions.cs" containingFunctionPresentation="Method 'RemoveCharStatsByType'">
+            <startOffsets>
+              <option value="889" />
+            </startOffsets>
+            <endOffsets>
+              <option value="933" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -5,7 +5,6 @@ namespace TestTask
 {
     public class Program
     {
-
         /// <summary>
         /// Программа принимает на входе 2 пути до файлов.
         /// Анализирует в первом файле кол-во вхождений каждой буквы (регистрозависимо). Например А, б, Б, Г и т.д.
@@ -19,7 +18,8 @@ namespace TestTask
             IList<LetterStats> singleLetterStats;
             using (IReadOnlyStream inputStream1 = GetInputStream(args[0]))
             {
-                singleLetterStats = FillSingleLetterStats(inputStream1);
+                ILetterStatFiller singleFiller = new SingleLetterStatFiller();
+                singleLetterStats = singleFiller.FillStats(inputStream1);
             }
             
             IList<LetterStats> doubleLetterStats;
@@ -28,8 +28,8 @@ namespace TestTask
                 doubleLetterStats = FillDoubleLetterStats(inputStream2);
             }
             
-            RemoveCharStatsByType(singleLetterStats, CharType.Vowel);
-            RemoveCharStatsByType(doubleLetterStats, CharType.Consonants);
+            singleLetterStats.RemoveCharStatsByType(CharType.Vowel);
+            doubleLetterStats.RemoveCharStatsByType(CharType.Consonants);
 
             PrintStatistic(singleLetterStats);
             PrintStatistic(doubleLetterStats);
@@ -89,26 +89,6 @@ namespace TestTask
         }
 
         /// <summary>
-        /// Ф-ция перебирает все найденные буквы/парные буквы, содержащие в себе только гласные или согласные буквы.
-        /// (Тип букв для перебора определяется параметром charType)
-        /// Все найденные буквы/пары соответствующие параметру поиска - удаляются из переданной коллекции статистик.
-        /// </summary>
-        /// <param name="letters">Коллекция со статистиками вхождения букв/пар</param>
-        /// <param name="charType">Тип букв для анализа</param>
-        private static void RemoveCharStatsByType(IList<LetterStats> letters, CharType charType)
-        {
-            // TODO : Удалить статистику по запрошенному типу букв.
-            switch (charType)
-            {
-                case CharType.Consonants:
-                    break;
-                case CharType.Vowel:
-                    break;
-            }
-            
-        }
-
-        /// <summary>
         /// Ф-ция выводит на экран полученную статистику в формате "{Буква} : {Кол-во}"
         /// Каждая буква - с новой строки.
         /// Выводить на экран необходимо предварительно отсортировав набор по алфавиту.
@@ -119,15 +99,6 @@ namespace TestTask
         {
             // TODO : Выводить на экран статистику. Выводить предварительно отсортировав по алфавиту!
             throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Метод увеличивает счётчик вхождений по переданной структуре.
-        /// </summary>
-        /// <param name="letterStats"></param>
-        private static void IncStatistic(ref LetterStats letterStats)
-        {
-            letterStats.Count++;
         }
     }
 }

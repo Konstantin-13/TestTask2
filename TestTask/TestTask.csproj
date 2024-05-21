@@ -42,13 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstaction\ILetterStatFiller.cs" />
+    <Compile Include="Abstaction\IReadOnlyStream.cs" />
+    <Compile Include="Abstaction\LetterStatFiller.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="CharType.cs" />
-    <Compile Include="IReadOnlyStream.cs" />
+    <Compile Include="Fillers\SingleLetterStatFiller.cs" />
     <Compile Include="LetterStats.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadOnlyStream.cs" />
+    <Compile Include="LetterStatListExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
