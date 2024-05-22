@@ -2,55 +2,19 @@ using System.Collections.Generic;
 
 namespace TestTask
 {
-    internal abstract class LetterStatFiller : ILetterStatFiller
+    public abstract class LetterStatFiller
     {
-        public IList<LetterStats> FillStats(IReadOnlyStream stream)
-        {
-            var stats = new List<LetterStats>();
-            stream.ResetPositionToStart();
-            while (!stream.IsEof)
-            {
-                char symbol = stream.ReadNextChar();
-                if (!char.IsLetter(symbol))
-                {
-                    continue;
-                }
-                
-                int indexOfBySymbol = IndexOfBySymbol(symbol, stats);
-                indexOfBySymbol = ValidateIndex(indexOfBySymbol, symbol, stats);
-                LetterStats letterStats = stats[indexOfBySymbol];
-                IncStatistic(ref letterStats);
-                stats[indexOfBySymbol] = letterStats;
-            }
-            
-            return stats;
-        }
-
-        protected abstract int IndexOfBySymbol(char symbol, IReadOnlyList<LetterStats> statsList);
+        public abstract IList<LetterStats> FillStats(IReadOnlyStream stream);
         
-        private int ValidateIndex(int indexOfBySymbol, char symbol, List<LetterStats> stats)
+        protected static int GetIndexBySymbol(string letter, IList<LetterStats> stats)
         {
+            int indexOfBySymbol = stats.IndexOfByLetter(letter);
             if (indexOfBySymbol < 0)
             {
-                stats.Add(new LetterStats
-                {
-                    Letter = symbol.ToString(),
-                    Count = 0,
-                });
-
-                indexOfBySymbol = stats.Count - 1;
+                indexOfBySymbol = stats.AddLetter(letter);
             }
 
             return indexOfBySymbol;
-        }
-        
-        /// <summary>
-        /// Метод увеличивает счётчик вхождений по переданной структуре.
-        /// </summary>
-        /// <param name="letterStats"></param>
-        private static void IncStatistic(ref LetterStats letterStats)
-        {
-            letterStats.Count++;
         }
     }
 }

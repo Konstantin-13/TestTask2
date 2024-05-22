@@ -4,18 +4,23 @@ namespace TestTask
 {
     internal sealed class SingleLetterStatFiller : LetterStatFiller
     {
-        protected override int IndexOfBySymbol(char symbol, IReadOnlyList<LetterStats> statsList)
+        public override IList<LetterStats> FillStats(IReadOnlyStream stream)
         {
-            for (int i = statsList.Count - 1; i >= 0; i--)
+            var stats = new List<LetterStats>();
+            stream.ResetPositionToStart();
+            while (!stream.IsEof)
             {
-                LetterStats letterStats = statsList[i];
-                if (letterStats.Letter[0] == symbol)
+                char symbol = stream.ReadNextChar();
+                if (!char.IsLetter(symbol))
                 {
-                    return i;
+                    continue;
                 }
+                
+                int indexOfBySymbol = GetIndexBySymbol(symbol.ToString(), stats);
+                stats.IncStatistic(indexOfBySymbol);
             }
-
-            return -1;
+            
+            return stats;
         }
     }
 }

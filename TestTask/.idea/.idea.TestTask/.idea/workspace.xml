@@ -10,17 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10a4e128-de89-4591-b187-f8f9051a903b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../TestTask.Tests/LetterStatsTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Abstaction/ILetterStatFiller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Abstaction/LetterStatFiller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Fillers/SingleLetterStatFiller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LetterStatListExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestTask.Tests/ReadOnlyStreamTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../TestTask.Tests/ReadOnlyStreamTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestTask.Tests/TestTask.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../TestTask.Tests/TestTask.Tests.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Extensions/CharExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fillers/DoubleLetterStatFiller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TestFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TestFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TestTask.Tests/LetterStatsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../TestTask.Tests/LetterStatsTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TestTask/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TestTask/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IReadOnlyStream.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Abstaction/IReadOnlyStream.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Abstaction/ILetterStatFiller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Abstaction/LetterStatFiller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Abstaction/LetterStatFiller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fillers/SingleLetterStatFiller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Fillers/SingleLetterStatFiller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LetterStatListExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Extensions/LetterStatsExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestTask.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TestTask.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestTask.csproj.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/TestTask.csproj.DotSettings" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +51,12 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/497e7c0354334ae6b2579b219192bcf04a000/26/960f6894/Reflect.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e068e2227ab74c1bb3d724ebaab0e3ff46b600/c0/b9299b64/Stream.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1361fc20bc2dd69b984f9d3e1a1c874e470652317f1059fa5e5b27ecd59aa/StreamReader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7373767c27c528180dea425f65e67d9f736529cb047f3182763b8f98a273/File.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8aef16189dbc674d8f2d483e3cab28f81e8276ac0cb5ee6b441f9fc18c38b/ArgumentNullException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d742fadf312a6956ae70b2fc83f1603758a36d9e20cf21b84087c67de81b304b/FileStream.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Abstaction/IReadOnlyStream.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Volumes/SamsungSSD/Projects/Dotnet/TestTask/TestTask/IReadOnlyStream.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Volumes/SamsungSSD/Projects/Dotnet/TestTask/TestTask/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Volumes/SamsungSSD/Projects/Dotnet/TestTask/TestTask/ReadOnlyStream.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -72,7 +73,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Project.TestTask.executor": "Debug",
+    "0afd0013-27e5-4df0-a7a8-58ba45ffb798.executor": "Debug",
     "30498918-aa45-4a35-a112-d87840cd6495.executor": "Debug",
+    "6d8a78a9-dffe-43f1-b4ae-5a2000408e90.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "code/fix-bugs",
     "node.js.detected.package.eslint": "true",
@@ -129,19 +132,19 @@
       </method>
     </configuration>
     <configuration name="TestTask" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/bin/Debug/TestTask.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bin/Debug" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="RUNTIME_ARGUMENTS" value="$PROJECT_DIR$/../TestFile.txt $PROJECT_DIR$/../TestFile.txt" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/TestTask.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="Console" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value=".NETFramework,Version=v4.6.1" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -164,6 +167,11 @@
         <option name="Build" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue=".NET Project.ConsoleApp1" />
+      <item itemvalue=".NET Project.ConsoleApplication1" />
+      <item itemvalue=".NET Project.TestTask" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -176,7 +184,8 @@
       <workItem from="1716277530792" duration="5528000" />
       <workItem from="1716284528975" duration="215000" />
       <workItem from="1716284752126" duration="874000" />
-      <workItem from="1716285635055" duration="6518000" />
+      <workItem from="1716285635055" duration="6842000" />
+      <workItem from="1716337242269" duration="5911000" />
     </task>
     <task id="LOCAL-00001" summary="fix ReadOnlyStream">
       <option name="closed" value="true" />
@@ -202,7 +211,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716286345324</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add single letter stats and tests">
+      <option name="closed" value="true" />
+      <created>1716304413436</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716304413436</updated>
+    </task>
+    <task id="LOCAL-00005" summary="test file">
+      <option name="closed" value="true" />
+      <created>1716304427251</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716304427251</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,23 +251,25 @@
     <MESSAGE value="fix ReadOnlyStream" />
     <MESSAGE value="add test assembly" />
     <MESSAGE value="add first tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="add first tests" />
+    <MESSAGE value="add single letter stats and tests" />
+    <MESSAGE value="test file" />
+    <option name="LAST_COMMIT_MESSAGE" value="test file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/LetterStatListExtensions.cs</url>
-          <line>20</line>
-          <properties documentPath="$PROJECT_DIR$/LetterStatListExtensions.cs" containingFunctionPresentation="Method 'RemoveCharStatsByType'">
+          <url>file://$PROJECT_DIR$/Program.cs</url>
+          <line>16</line>
+          <properties documentPath="$PROJECT_DIR$/Program.cs" containingFunctionPresentation="Method 'Main'">
             <startOffsets>
-              <option value="889" />
+              <option value="695" />
             </startOffsets>
             <endOffsets>
-              <option value="933" />
+              <option value="696" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

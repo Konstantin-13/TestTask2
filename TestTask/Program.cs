@@ -18,14 +18,15 @@ namespace TestTask
             IList<LetterStats> singleLetterStats;
             using (IReadOnlyStream inputStream1 = GetInputStream(args[0]))
             {
-                ILetterStatFiller singleFiller = new SingleLetterStatFiller();
+                LetterStatFiller singleFiller = new SingleLetterStatFiller();
                 singleLetterStats = singleFiller.FillStats(inputStream1);
             }
             
             IList<LetterStats> doubleLetterStats;
             using (IReadOnlyStream inputStream2 = GetInputStream(args[1]))
             {
-                doubleLetterStats = FillDoubleLetterStats(inputStream2);
+                LetterStatFiller doubleFiller = new DoubleLetterStatFiller();
+                doubleLetterStats = doubleFiller.FillStats(inputStream2);
             }
             
             singleLetterStats.RemoveCharStatsByType(CharType.Vowel);
@@ -48,47 +49,6 @@ namespace TestTask
         }
 
         /// <summary>
-        /// Ф-ция считывающая из входящего потока все буквы, и возвращающая коллекцию статистик вхождения каждой буквы.
-        /// Статистика РЕГИСТРОЗАВИСИМАЯ!
-        /// </summary>
-        /// <param name="stream">Стрим для считывания символов для последующего анализа</param>
-        /// <returns>Коллекция статистик по каждой букве, что была прочитана из стрима.</returns>
-        private static IList<LetterStats> FillSingleLetterStats(IReadOnlyStream stream)
-        {
-            stream.ResetPositionToStart();
-            while (!stream.IsEof)
-            {
-                char c = stream.ReadNextChar();
-                // TODO : заполнять статистику с использованием метода IncStatistic. Учёт букв - регистрозависимый.
-            }
-
-            //return ???;
-
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Ф-ция считывающая из входящего потока все буквы, и возвращающая коллекцию статистик вхождения парных букв.
-        /// В статистику должны попадать только пары из одинаковых букв, например АА, СС, УУ, ЕЕ и т.д.
-        /// Статистика - НЕ регистрозависимая!
-        /// </summary>
-        /// <param name="stream">Стрим для считывания символов для последующего анализа</param>
-        /// <returns>Коллекция статистик по каждой букве, что была прочитана из стрима.</returns>
-        private static IList<LetterStats> FillDoubleLetterStats(IReadOnlyStream stream)
-        {
-            stream.ResetPositionToStart();
-            while (!stream.IsEof)
-            {
-                char c = stream.ReadNextChar();
-                // TODO : заполнять статистику с использованием метода IncStatistic. Учёт букв - НЕ регистрозависимый.
-            }
-
-            //return ???;
-
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Ф-ция выводит на экран полученную статистику в формате "{Буква} : {Кол-во}"
         /// Каждая буква - с новой строки.
         /// Выводить на экран необходимо предварительно отсортировав набор по алфавиту.
@@ -97,8 +57,13 @@ namespace TestTask
         /// <param name="letters">Коллекция со статистикой</param>
         private static void PrintStatistic(IEnumerable<LetterStats> letters)
         {
-            // TODO : Выводить на экран статистику. Выводить предварительно отсортировав по алфавиту!
-            throw new NotImplementedException();
+            var sorted = new List<LetterStats>(letters);
+            sorted.Sort((x, y) => String.Compare(x.Letter, y.Letter, StringComparison.Ordinal));
+            Console.WriteLine("ИТОГО:");
+            foreach (var letter in sorted)
+            {
+                Console.WriteLine($"{letter.Letter} : {letter.Count}");
+            }
         }
     }
 }
