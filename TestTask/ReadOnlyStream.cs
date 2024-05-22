@@ -1,11 +1,15 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace TestTask
 {
-    public class ReadOnlyStream : IReadOnlyStream
+    internal class ReadOnlyStream : IReadOnlyStream
     {
-        private Stream _localStream;
+        private readonly StreamReader _reader;
+        private readonly Stream _localStream;
+
+        private bool _isDisposed;
 
         /// <summary>
         /// Конструктор класса. 
@@ -13,21 +17,39 @@ namespace TestTask
         /// обеспечить ГАРАНТИРОВАННОЕ закрытие файла после окончания работы с таковым!
         /// </summary>
         /// <param name="fileFullPath">Полный путь до файла для чтения</param>
-        public ReadOnlyStream(string fileFullPath)
+        public ReadOnlyStream(string fileFullPath) : this(fileFullPath, Encoding.Default)
         {
-            IsEof = true;
-
-            // TODO : Заменить на создание реального стрима для чтения файла!
-            _localStream = null;
         }
-                
+
+        /// <summary>
+        /// Конструктор класса. 
+        /// Т.к. происходит прямая работа с файлом, необходимо 
+        /// обеспечить ГАРАНТИРОВАННОЕ закрытие файла после окончания работы с таковым!
+        /// </summary>
+        /// <param name="fileFullPath">Полный путь до файла для чтения</param>
+        /// <param name="encoding">Кодировка</param>
+        public ReadOnlyStream(string fileFullPath, Encoding encoding)
+        {
+            if (string.IsNullOrEmpty(fileFullPath))
+            {
+                throw new ArgumentNullException(nameof(fileFullPath));
+            }
+            
+            _localStream = File.OpenRead(fileFullPath);
+            _reader = new StreamReader(_localStream, encoding);
+            _isDisposed = false;
+        }
+
         /// <summary>
         /// Флаг окончания файла.
         /// </summary>
         public bool IsEof
         {
-            get; // TODO : Заполнять данный флаг при достижении конца файла/стрима при чтении
-            private set;
+            get
+            {
+                ThrowIfDisposed();
+                return _reader.Peek() < 0;
+            }
         }
 
         /// <summary>
@@ -38,8 +60,9 @@ namespace TestTask
         /// <returns>Считанный символ.</returns>
         public char ReadNextChar()
         {
-            // TODO : Необходимо считать очередной символ из _localStream
-            throw new NotImplementedException();
+            ThrowIfDisposed();
+            int charCode = _reader.Read();
+            return Convert.ToChar(charCode);
         }
 
         /// <summary>
@@ -47,14 +70,30 @@ namespace TestTask
         /// </summary>
         public void ResetPositionToStart()
         {
-            if (_localStream == null)
+            ThrowIfDisposed();
+            _localStream.Position = 0;
+        }
+
+        public void Dispose()
+        {
+            if (_isDisposed)
             {
-                IsEof = true;
                 return;
             }
+            
+            _reader.Close();
+            _reader.Dispose();
+            _localStream.Close();
+            _localStream.Dispose();
+            _isDisposed = true;
+        }
 
-            _localStream.Position = 0;
-            IsEof = false;
+        private void ThrowIfDisposed()
+        {
+            if (_isDisposed)
+            {
+                throw new ObjectDisposedException(nameof(ReadOnlyStream));
+            }
         }
     }
 }
