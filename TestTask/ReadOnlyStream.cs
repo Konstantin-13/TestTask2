@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace TestTask
 {
     internal class ReadOnlyStream : IReadOnlyStream
     {
+        private readonly StreamReader _reader;
         private readonly Stream _localStream;
 
         private bool _isDisposed;
@@ -15,7 +17,18 @@ namespace TestTask
         /// обеспечить ГАРАНТИРОВАННОЕ закрытие файла после окончания работы с таковым!
         /// </summary>
         /// <param name="fileFullPath">Полный путь до файла для чтения</param>
-        public ReadOnlyStream(string fileFullPath)
+        public ReadOnlyStream(string fileFullPath) : this(fileFullPath, Encoding.Default)
+        {
+        }
+
+        /// <summary>
+        /// Конструктор класса. 
+        /// Т.к. происходит прямая работа с файлом, необходимо 
+        /// обеспечить ГАРАНТИРОВАННОЕ закрытие файла после окончания работы с таковым!
+        /// </summary>
+        /// <param name="fileFullPath">Полный путь до файла для чтения</param>
+        /// <param name="encoding">Кодировка</param>
+        public ReadOnlyStream(string fileFullPath, Encoding encoding)
         {
             if (string.IsNullOrEmpty(fileFullPath))
             {
@@ -23,6 +36,7 @@ namespace TestTask
             }
             
             _localStream = File.OpenRead(fileFullPath);
+            _reader = new StreamReader(_localStream, encoding);
             _isDisposed = false;
         }
 
@@ -34,7 +48,7 @@ namespace TestTask
             get
             {
                 ThrowIfDisposed();
-                return _localStream.Position >= _localStream.Length;
+                return _reader.Peek() < 0;
             }
         }
 
@@ -47,8 +61,8 @@ namespace TestTask
         public char ReadNextChar()
         {
             ThrowIfDisposed();
-            int charCode = _localStream.ReadByte();
-            return charCode == -1 ? '0' : (char)charCode;
+            int charCode = _reader.Read();
+            return Convert.ToChar(charCode);
         }
 
         /// <summary>
@@ -56,6 +70,7 @@ namespace TestTask
         /// </summary>
         public void ResetPositionToStart()
         {
+            ThrowIfDisposed();
             _localStream.Position = 0;
         }
 
@@ -66,6 +81,8 @@ namespace TestTask
                 return;
             }
             
+            _reader.Close();
+            _reader.Dispose();
             _localStream.Close();
             _localStream.Dispose();
             _isDisposed = true;
