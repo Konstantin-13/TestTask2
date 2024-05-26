@@ -5,7 +5,8 @@ namespace TestTask
 {
     public class ReadOnlyStream : IReadOnlyStream
     {
-        private Stream _localStream;
+        private StreamReader _localStream;
+        private bool _isEof;
 
         /// <summary>
         /// Конструктор класса. 
@@ -18,7 +19,7 @@ namespace TestTask
             IsEof = true;
 
             // TODO : Заменить на создание реального стрима для чтения файла!
-            _localStream = null;
+            _localStream = new StreamReader(fileFullPath);
         }
                 
         /// <summary>
@@ -26,8 +27,8 @@ namespace TestTask
         /// </summary>
         public bool IsEof
         {
-            get; // TODO : Заполнять данный флаг при достижении конца файла/стрима при чтении
-            private set;
+            get { return _isEof; } // TODO : Заполнять данный флаг при достижении конца файла/стрима при чтении
+            private set { _isEof = value; }
         }
 
         /// <summary>
@@ -39,7 +40,12 @@ namespace TestTask
         public char ReadNextChar()
         {
             // TODO : Необходимо считать очередной символ из _localStream
-            throw new NotImplementedException();
+            int nextChar = _localStream.Read();
+            if (nextChar == -1)
+            {
+                IsEof = true;
+            }
+            return (char)nextChar;
         }
 
         /// <summary>
@@ -47,14 +53,14 @@ namespace TestTask
         /// </summary>
         public void ResetPositionToStart()
         {
-            if (_localStream == null)
-            {
-                IsEof = true;
-                return;
-            }
-
-            _localStream.Position = 0;
+            _localStream.BaseStream.Position = 0;
+            _localStream.DiscardBufferedData();
             IsEof = false;
+        }
+
+        public void Dispose()
+        {
+            _localStream?.Dispose();
         }
     }
 }
